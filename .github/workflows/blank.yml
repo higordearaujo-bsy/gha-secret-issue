@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  one-line:
+    environment: one-line
+    runs-on: ubuntu-latest
+    outputs:
+      value: ${{ steps.run.outputs.value }}
+    steps:
+      - id: run
+        run: |
+          echo 'value={"value": "hello from one-line"}' | tee -a $GITHUB_OUTPUT
+  multi-line:
+    environment: multi-line
+    runs-on: ubuntu-latest
+    outputs:
+      value: ${{ steps.run.outputs.value }}
+    steps:
+      - id: run
+        run: |
+          echo 'value={"value": "hello from multi-line"}' | tee -a $GITHUB_OUTPUT
